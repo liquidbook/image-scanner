@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Fetcher</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="image-fetcher.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Image Fetcher</h1>
+    <div class="form-group">
+        <label for="urlInput">Enter Image URL</label>
+        <input type="text" class="form-control" id="urlInput" placeholder="Enter URL">
+        <small id="urlError" class="form-text text-muted"></small>
+    </div>
+    <button id="fetchButton" class="btn btn-primary">Fetch Image</button>
+    <div class="view-toggle">
+        <span class="material-icons" id="list-view-toggle">list_alt</span>
+        <span class="material-icons" id="grid-view-toggle">grid_view</span>
+    </div>
+    <div id="imageDisplay" class="grid-view mt-4"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="image-fetcher.js"></script>
+
+</body>
+</html>

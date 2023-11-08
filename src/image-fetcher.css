@@ -1,0 +1,66 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.view-toggle {
+    margin-top: 10px;
+}
+
+.view-toggle .material-icons {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px;
+}
+
+#imageDisplay.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+#imageDisplay.list-view {
+    display: block;
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.image-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+}
+
+#imageModal {
+    transition: opacity 0.25s ease;
+}
+
+#imageModal .modal-content {
+    transition: transform 0.3s ease-out;
+}
+
+.modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    transform: translateY(-50px); /* Initial state */
+    opacity: 0;
+}
+
+/* Modal open state */
+#imageModal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
