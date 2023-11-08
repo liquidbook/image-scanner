@@ -1,0 +1,25 @@
+# nodejs modules 
+node_modules/
+
+#  Compiled code
+*.class, *.dll, *.exe, *.o, *.so, *.pyc, *.pyo
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp, *.swp, *.bak, scratch.txt
+
+# IDE and editor files
+.idea/, .vscode/, .project, .classpath
+
+# Build artifacts
+build/, dist/, target/
+
+# User-specific files
+.history/, .bash_history
+
+#private 
+config.ini, secrets.yml
+
+archive/

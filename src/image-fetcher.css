@@ -64,3 +64,40 @@ body {
     transform: translateY(0);
     opacity: 1;
 }
+
+.material-icons.modal-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #FFF; /* or any color you prefer */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.material-icons.modal-navigation.next {
+    right: 10px;
+}
+
+.material-icons.modal-navigation.prev {
+    left: 10px;
+}
+
+/* This will make sure that the caption does not overflow the modal */
+.modal-content {
+    position: relative;
+    padding-bottom: 40px; /* Adjust the padding to fit the caption */
+}
+
+/* Style for the caption */
+.modal-caption {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+    color: #FFF; /* or any color that matches your design */
+    font-size: 16px;
+    line-height: 1.6;
+}
