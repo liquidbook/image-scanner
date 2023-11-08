@@ -8,7 +8,9 @@ node_modules/
 *.log
 
 # Temporary files
-*.tmp, *.swp, *.bak, scratch.txt
+*.tmp, *.swp, *.bak
+
+scratch.txt
 
 # IDE and editor files
 .idea/, .vscode/, .project, .classpath
