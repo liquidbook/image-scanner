@@ -97,7 +97,47 @@ body {
     width: 100%;
     bottom: 10px;
     text-align: center;
-    color: #FFF; /* or any color that matches your design */
+    color: #545b62; 
     font-size: 16px;
     line-height: 1.6;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.modal-navigator {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: center; /* Keeps items vertically centered */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px; /* Adjust as needed */
+    background-color: #ddd;
+    opacity: 73%;
+}
+
+.material-icons {
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Optional: Add some space between the arrows */
+.material-icons:not(:last-child) {
+    margin-right: 10px; /* Adjust as needed */
 }

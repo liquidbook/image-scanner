@@ -120,33 +120,53 @@ function handleImageClick(event) {
 }
 
 function displayModalImage(src) {
+    // Find the index of the current image
     currentImageIndex = imageSeriesUrls.indexOf(src);
 
+    // Get the modal and modal content containers
     const modal = document.getElementById('imageModal');
     const modalContent = modal.querySelector('.modal-content');
-    modalContent.innerHTML = '';
 
+    // Clear only the image and caption from the modal content, preserving the navigation arrows
+    const existingImg = modalContent.querySelector('img');
+    const existingCaption = modalContent.querySelector('.modal-caption');
+
+    if (existingImg) modalContent.removeChild(existingImg);
+    if (existingCaption) modalContent.removeChild(existingCaption);
+
+    // Create a new image element and set its source
     const img = new Image();
     img.onload = function() {
+        // Create a caption using the filename and dimensions
         const filename = src.split('/').pop();
         const captionText = `${filename} - ${img.naturalWidth} x ${img.naturalHeight}`;
 
+        // Create and style the caption div
         const captionDiv = document.createElement('div');
         captionDiv.textContent = captionText;
-        captionDiv.style.textAlign = 'center';
-        captionDiv.style.padding = '10px 0';
+        captionDiv.className = 'modal-caption'; // Use a class for styling the caption
 
+        // Append the new image and caption to the modal content
         modalContent.appendChild(img);
         modalContent.appendChild(captionDiv);
-
-        modal.style.display = 'block';
-        modal.classList.add('show');
     };
     img.src = src;
 
-    if (!modal.querySelector('.modal-content')) {
-        modal.appendChild(modalContent);
-    }
+    // Show the modal
+    modal.style.display = 'block';
+    modal.classList.add('show');
+}
+
+function navigateNext() {
+    console.log("navigateNext fired");
+    currentImageIndex = (currentImageIndex + 1) % imageSeriesUrls.length;
+    displayModalImage(imageSeriesUrls[currentImageIndex]);
+}
+
+function navigatePrevious() {
+    console.log("navigatePrevious fired");
+    currentImageIndex = (currentImageIndex - 1 + imageSeriesUrls.length) % imageSeriesUrls.length;
+    displayModalImage(imageSeriesUrls[currentImageIndex]);
 }
 
 function createImageModal() {
@@ -161,14 +181,37 @@ function createImageModal() {
     modal.style.width = '100%';
     modal.style.height = '100%';
     modal.style.overflow = 'auto';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.5)'; // Background color with opacity
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Corrected RGBA color
 
     const modalContent = document.createElement('div');
     modalContent.className = 'modal-content';
     modal.appendChild(modalContent);
 
+    // Create the navigator container
+    const navigatorContainer = document.createElement('div');
+    navigatorContainer.className = 'modal-navigator';
+
+    // Create navigation arrows
+    const prevArrow = document.createElement('span');
+    prevArrow.classList.add('material-icons');
+    prevArrow.textContent = 'navigate_before';
+    prevArrow.onclick = navigatePrevious;
+
+    const nextArrow = document.createElement('span');
+    nextArrow.classList.add('material-icons');
+    nextArrow.textContent = 'navigate_next';
+    nextArrow.onclick = navigateNext;
+
+    // Append arrows to the navigator container
+    navigatorContainer.appendChild(prevArrow);
+    navigatorContainer.appendChild(nextArrow);
+
+    // Append navigator container to the modal content
+    modalContent.appendChild(navigatorContainer);
+
     document.body.appendChild(modal);
 
+    // Event listeners for the modal
     modal.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.classList.remove('show');
@@ -181,32 +224,9 @@ function createImageModal() {
         }
     });
 
-    // Append navigation arrows to the modal
-    const nextArrow = document.createElement('span');
-    nextArrow.classList.add('material-icons');
-    nextArrow.textContent = 'navigate_next';
-    nextArrow.onclick = navigateNext;
-
-    const prevArrow = document.createElement('span');
-    prevArrow.classList.add('material-icons');
-    prevArrow.textContent = 'navigate_before';
-    prevArrow.onclick = navigatePrevious;
-
-    modalContent.appendChild(prevArrow);
-    modalContent.appendChild(nextArrow);
-
     return modal;
 }
 
-function navigateNext() {
-    currentImageIndex = (currentImageIndex + 1) % imageSeriesUrls.length;
-    displayModalImage(imageSeriesUrls[currentImageIndex]);
-}
-
-function navigatePrevious() {
-    currentImageIndex = (currentImageIndex - 1 + imageSeriesUrls.length) % imageSeriesUrls.length;
-    displayModalImage(imageSeriesUrls[currentImageIndex]);
-}
 
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('imageModal');
