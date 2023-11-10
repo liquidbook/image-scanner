@@ -1,5 +1,5 @@
 # nodejs modules 
-node_modules/
+node_modules/, src/node_modules/
 
 #  Compiled code
 *.class, *.dll, *.exe, *.o, *.so, *.pyc, *.pyo
@@ -13,7 +13,11 @@ node_modules/
 scratch.txt
 
 # IDE and editor files
-.idea/, .vscode/, .project, .classpath
+.idea/
+.vscode/
+.project
+.classpath
+/.vscode/
 
 # Build artifacts
 build/, dist/, target/
@@ -25,3 +29,5 @@ build/, dist/, target/
 config.ini, secrets.yml
 
 archive/
+node_modules
+/node_modules

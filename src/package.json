@@ -1,0 +1,14 @@
+{
+  "name": "image-fetcher",
+  "version": "1.0.0",
+  "description": "a web app that will take a url and display this image or a series of images",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

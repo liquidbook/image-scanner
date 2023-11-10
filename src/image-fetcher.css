@@ -141,3 +141,53 @@ body {
 .material-icons:not(:last-child) {
     margin-right: 10px; /* Adjust as needed */
 }
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.navigation-menu {
+    list-style: none;
+    display: flex;
+    align-items: center; /* This will vertically align the menu items */
+    gap: 20px;
+}
+
+.navigation-menu li {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    top: 100%;
+}
+.header-container img.logo {
+    max-height: 120px;
+    width: auto; /* This will maintain the aspect ratio */
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    /* Tablet styles */
+}
+
+@media (max-width: 360px) {
+    /* Mobile styles */
+}
