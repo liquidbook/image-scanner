@@ -34,7 +34,7 @@ body {
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #FFF;
   padding: 5px;
   font-size: 12px;
 }
@@ -43,19 +43,15 @@ body {
   transition: opacity 0.25s ease;
 }
 #imageModal .modal-content {
-  transition: transform 0.3s ease-out;
-}
-#imageModal .modal-content {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  transform: translateY(-50px); /* Initial state */
+  transition: transform 0.3s ease-out;
+  transform: translateY(-50px);
   opacity: 0;
-}
-#imageModal .modal-content {
   position: relative;
-  padding-bottom: 40px; /* Adjust the padding to fit the caption */
+  padding-bottom: 40px;
 }
 #imageModal.show .modal-content {
   transform: translateY(0);
@@ -74,7 +70,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #FFF; /* or any color you prefer */
+  color: #FFF;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -107,14 +103,14 @@ body {
 
 .modal-navigator {
   display: flex;
-  justify-content: flex-end; /* Aligns items to the right */
-  align-items: center; /* Keeps items vertically centered */
+  justify-content: flex-end;
+  align-items: center;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 10px; /* Adjust as needed */
+  padding: 10px;
   background-color: #ddd;
-  opacity: 73%;
+  opacity: 0.73;
 }
 
 .header-container {
@@ -158,12 +154,5 @@ footer {
   padding: 20px;
   max-width: 1140px;
   margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  /* Tablet styles */
-}
-@media (max-width: 360px) {
-  /* Mobile styles */
 }
 /*# sourceMappingURL=style.css.map */

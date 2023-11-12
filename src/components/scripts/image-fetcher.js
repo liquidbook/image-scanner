@@ -156,7 +156,7 @@ function displayModalImage(src) {
     modal.style.display = 'block';
     modal.classList.add('show');
 }
-
+  
 function navigateNext() {
     console.log("navigateNext fired");
     currentImageIndex = (currentImageIndex + 1) % imageSeriesUrls.length;

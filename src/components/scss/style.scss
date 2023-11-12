@@ -1,5 +1,30 @@
+// Define variables
+$font-stack: 'Poppins', sans-serif;
+$primary-color: #FFF;
+$secondary-color: #545b62;
+$modal-bg-color: rgba(0, 0, 0, 0.5);
+$modal-border-color: #888;
+$dropdown-bg-color: #ddd;
+$footer-bg-color: #fff;
+
+// Breakpoints for responsive design
+$breakpoint-desktop: 1140px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 360px;
+
+// Mixins for media queries
+@mixin respond-to($media) {
+    @if $media == 'desktop' {
+      @media (max-width: $breakpoint-desktop) { @content; }
+    } @else if $media == 'tablet' {
+      @media (max-width: $breakpoint-tablet) { @content; }
+    } @else if $media == 'mobile' {
+      @media (max-width: $breakpoint-mobile) { @content; }
+    }
+  }
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: $font-stack;
 }
 
 .view-toggle {
@@ -20,7 +45,6 @@ body {
         display: block;
     }
 }
-
 .image-container {
     position: relative;
     margin-bottom: 10px;
@@ -33,35 +57,29 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: $modal-bg-color;
+    color: $primary-color;
     padding: 5px;
     font-size: 12px;
 }
-
 #imageModal {
     transition: opacity 0.25s ease;
     .modal-content {
-        transition: transform 0.3s ease-out;
-    }
-    .modal-content {
         margin: 15% auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid $modal-border-color;
         width: 80%;
-        transform: translateY(-50px); /* Initial state */
+        transition: transform 0.3s ease-out;
+        transform: translateY(-50px); // Initial state
         opacity: 0;
-    }
-    .modal-content {
         position: relative;
-        padding-bottom: 40px; /* Adjust the padding to fit the caption */
+        padding-bottom: 40px; // Adjust the padding to fit the caption
     }
     &.show .modal-content {
         transform: translateY(0);
         opacity: 1;
     }
 }
-
 .material-icons {
     cursor: pointer;
     user-select: none;
@@ -73,7 +91,7 @@ body {
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
-        color: #FFF; /* or any color you prefer */
+        color: $primary-color;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -95,7 +113,7 @@ body {
     width: 100%;
     bottom: 10px;
     text-align: center;
-    color: #545b62; 
+    color: $secondary-color;
     font-size: 16px;
     line-height: 1.6;
 }
@@ -108,14 +126,14 @@ body {
 }
 .modal-navigator {
     display: flex;
-    justify-content: flex-end; /* Aligns items to the right */
-    align-items: center; /* Keeps items vertically centered */
+    justify-content: flex-end;
+    align-items: center;
     position: absolute;
     top: 0;
     right: 0;
-    padding: 10px; /* Adjust as needed */
-    background-color: #ddd;
-    opacity: 73%;
+    padding: 10px;
+    background-color: $dropdown-bg-color;
+    opacity: 0.73;
 }
 .header-container {
     display: flex;
@@ -136,7 +154,6 @@ body {
 .navigation-menu li {
     position: relative;
 }
-
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -150,7 +167,6 @@ body {
 .dropdown:hover .dropdown-menu {
     display: block;
 }
-
 footer {
     text-align: center;
     padding: 20px;
@@ -158,10 +174,10 @@ footer {
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-    /* Tablet styles */
+@include respond-to('tablet') {
+    // Tablet styles
 }
 
-@media (max-width: 360px) {
-    /* Mobile styles */
+@include respond-to('mobile') {
+    // Mobile styles
 }
