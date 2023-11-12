@@ -48,6 +48,10 @@ function handleImageSeries(url) {
 
 function fetchImage(urls) {
     const imageDisplayArea = document.getElementById('imageDisplay');
+    const spinner = document.getElementById('spinner');
+
+    spinner.removeAttribute('hidden');
+
     imageDisplayArea.innerHTML = '';
 
     imageSeriesUrls = urls; // Store the array of image URLs
@@ -55,9 +59,11 @@ function fetchImage(urls) {
     urls.forEach(url => {
         const image = new Image();
         image.onload = function() {
+            spinner.setAttribute('hidden', '');
             displayImage(url, image.naturalWidth, image.naturalHeight);
         };
         image.onerror = function() {
+            spinner.setAttribute('hidden', '');
             // Handle broken image links by not attempting to display them
         };
         image.src = url;
@@ -71,6 +77,7 @@ function displayImage(url, width, height) {
 
     const imgElement = document.createElement('img');
     imgElement.src = url;
+    imgElement.loading = 'lazy';
     imgElement.className = 'img-fluid';
     imgElement.alt = 'Image';
 
@@ -226,6 +233,18 @@ function createImageModal() {
 
     return modal;
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+        // Load next image
+        currentImageIndex = (currentImageIndex + 1) % imageSeriesUrls.length;
+        displayModalImage(imageSeriesUrls[currentImageIndex]);
+    } else if (event.key === 'ArrowLeft') {
+        // Load previous image
+        currentImageIndex = (currentImageIndex - 1 + imageSeriesUrls.length) % imageSeriesUrls.length;
+        displayModalImage(imageSeriesUrls[currentImageIndex]);
+    }
+});
 
 
 window.addEventListener('click', function(event) {

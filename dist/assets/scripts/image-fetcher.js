@@ -43,17 +43,22 @@ function handleImageSeries(url) {
 }
 function fetchImage(urls) {
   var imageDisplayArea = document.getElementById('imageDisplay');
+  var spinner = document.getElementById('spinner');
+  spinner.removeAttribute('hidden');
   imageDisplayArea.innerHTML = '';
   imageSeriesUrls = urls; // Store the array of image URLs
 
   urls.forEach(function (url) {
     var image = new Image();
     image.onload = function () {
+      spinner.setAttribute('hidden', '');
       displayImage(url, image.naturalWidth, image.naturalHeight);
     };
     image.onerror = function () {
+      spinner.setAttribute('hidden', '');
       // Handle broken image links by not attempting to display them
     };
+
     image.src = url;
   });
 }
@@ -63,6 +68,7 @@ function displayImage(url, width, height) {
   containerDiv.className = 'image-container';
   var imgElement = document.createElement('img');
   imgElement.src = url;
+  imgElement.loading = 'lazy';
   imgElement.className = 'img-fluid';
   imgElement.alt = 'Image';
   var dimensionDiv = document.createElement('div');
@@ -206,6 +212,17 @@ function createImageModal() {
   });
   return modal;
 }
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'ArrowRight') {
+    // Load next image
+    currentImageIndex = (currentImageIndex + 1) % imageSeriesUrls.length;
+    displayModalImage(imageSeriesUrls[currentImageIndex]);
+  } else if (event.key === 'ArrowLeft') {
+    // Load previous image
+    currentImageIndex = (currentImageIndex - 1 + imageSeriesUrls.length) % imageSeriesUrls.length;
+    displayModalImage(imageSeriesUrls[currentImageIndex]);
+  }
+});
 window.addEventListener('click', function (event) {
   var modal = document.getElementById('imageModal');
   if (event.target === modal) {
